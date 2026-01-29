@@ -638,7 +638,7 @@ const CreateParcel = () => {
             </Stack>
           </Paper>
 
-          {/* FOOD ITEMS GRID - COMPACT CARDS */}
+          {/* FOOD ITEMS GRID - FIXED: Square cards with even sizes */}
           <Grid container spacing={2}>
             {filteredData.map((item, index) => (
               <Grid
@@ -647,12 +647,18 @@ const CreateParcel = () => {
                 sm={6}
                 md={4}
                 key={item.id}
+                sx={{
+                  // Ensure all cards have the same height
+                  display: 'flex',
+                }}
               >
                 <Card
                   ref={el => menuItemsRef.current[index] = el}
                   tabIndex={0}
                   sx={{
-                    height: '100%',
+                    // FIXED: Square-like card with fixed height
+                    width: '100%',
+                    height: { xs: 280, sm: 320, md: 340 }, // Fixed height for all cards
                     display: 'flex',
                     flexDirection: 'column',
                     borderRadius: 2,
@@ -681,8 +687,12 @@ const CreateParcel = () => {
                     menuItemsRef.current[index]?.focus();
                   }}
                 >
-                  {/* IMAGE */}
-                  <Box sx={{ position: 'relative', height: 140 }}>
+                  {/* IMAGE - Fixed height container */}
+                  <Box sx={{ 
+                    position: 'relative', 
+                    height: { xs: 140, sm: 160, md: 180 },
+                    flexShrink: 0,
+                  }}>
                     <CardMedia
                       component="img"
                       image={item.image}
@@ -717,9 +727,15 @@ const CreateParcel = () => {
                     </Box>
                   </Box>
 
-                  <CardContent sx={{ p: 2, flexGrow: 1 }}>
-                    {/* ITEM NAME AND PRICE */}
-                    <Box sx={{ mb: 1 }}>
+                  <CardContent sx={{ 
+                    p: 1.5, 
+                    flexGrow: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                  }}>
+                    {/* ITEM NAME AND DESCRIPTION */}
+                    <Box sx={{ mb: 1, flexGrow: 1 }}>
                       <Typography 
                         variant="subtitle1" 
                         fontWeight={600}
@@ -728,6 +744,9 @@ const CreateParcel = () => {
                           WebkitLineClamp: 1,
                           WebkitBoxOrient: 'vertical',
                           overflow: 'hidden',
+                          fontSize: { xs: '0.95rem', sm: '1rem' },
+                          lineHeight: 1.2,
+                          mb: 0.5,
                         }}
                       >
                         {item.name}
@@ -740,8 +759,8 @@ const CreateParcel = () => {
                           WebkitLineClamp: 2,
                           WebkitBoxOrient: 'vertical',
                           overflow: 'hidden',
-                          mb: 1,
-                          fontSize: '0.8rem',
+                          fontSize: { xs: '0.75rem', sm: '0.8rem' },
+                          lineHeight: 1.3,
                         }}
                       >
                         {item.description}
@@ -749,8 +768,18 @@ const CreateParcel = () => {
                     </Box>
 
                     {/* PRICE AND ADD BUTTON */}
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <Typography variant="h6" fontWeight={800} color="primary">
+                    <Box sx={{ 
+                      display: 'flex', 
+                      justifyContent: 'space-between', 
+                      alignItems: 'center',
+                      mt: 'auto',
+                    }}>
+                      <Typography 
+                        variant="h6" 
+                        fontWeight={800} 
+                        color="primary"
+                        sx={{ fontSize: { xs: '1rem', sm: '1.1rem' } }}
+                      >
                         ₹{item.price}
                       </Typography>
                       
@@ -766,6 +795,9 @@ const CreateParcel = () => {
                             borderRadius: 1.5,
                             minWidth: 80,
                             fontWeight: 600,
+                            fontSize: { xs: '0.75rem', sm: '0.8rem' },
+                            py: 0.5,
+                            px: 1,
                           }}
                         >
                           Add
@@ -774,25 +806,7 @@ const CreateParcel = () => {
                     </Box>
                   </CardContent>
                   
-                  {/* KEYBOARD SHORTCUT HINT */}
-                  {focusedIndex.menu === index && (
-                    <Box
-                      sx={{
-                        position: 'absolute',
-                        bottom: 4,
-                        left: 4,
-                        background: theme.palette.primary.main,
-                        color: 'white',
-                        borderRadius: 1,
-                        px: 1,
-                        py: 0.2,
-                        fontSize: '0.7rem',
-                        fontWeight: 'bold',
-                      }}
-                    >
-                      Space to add
-                    </Box>
-                  )}
+                  {/* REMOVED: Space to add keyboard shortcut hint */}
                 </Card>
               </Grid>
             ))}

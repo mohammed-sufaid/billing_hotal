@@ -78,14 +78,25 @@ const CashierScreen = () => {
   };
 
   return (
-    <Box p={3}>
+ <Box p={3} sx={{ bgcolor: "#f6f7fb", minHeight: "100vh" }}>
+  <Typography variant="h5" mb={3} fontWeight="bold">
+    Cashier Screen
+  </Typography>
 
-      <Typography variant="h5" mb={2}>
-        Cashier Screen
-      </Typography>
 
       {/* ================= SEARCH ================= */}
-      <Box display="flex" gap={2} mb={3}>
+<Box
+  display="flex"
+  gap={2}
+  mb={3}
+  component={Paper}
+  sx={{
+    p: 2,
+    borderRadius: 2,
+    boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
+  }}
+>
+
         <TextField
           inputRef={billInputRef}
           label="Bill Number"
@@ -102,7 +113,14 @@ const CashierScreen = () => {
       <Box display="grid" gridTemplateColumns="2fr 1fr" gap={3}>
 
         {/* ================= BILL ================= */}
-        <Paper sx={{ p: 3 }}>
+<Paper
+  sx={{
+    p: 3,
+    borderRadius: 3,
+    boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+  }}
+>
+
 
           <Typography fontWeight="bold" mb={2}>
             {billData
@@ -164,7 +182,7 @@ const CashierScreen = () => {
         </Paper>
 
         {/* ================= PAYMENT PANEL ================= */}
-        <Paper sx={{ p: 3 }}>
+        <Paper sx={{ p: 3 ,borderRadius:3}} >
 
           <Typography fontWeight="bold">
             Payment Panel {paymentMethod && `(${paymentMethod})`}
