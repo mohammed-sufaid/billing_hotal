@@ -9,8 +9,8 @@ import BillingDashboard from "./components/BillingDashboard";
 import CashierScreen from "./pages/CashierScreen";
 
 // Parcel Pages
-import ParcelDashboard from "./components/Parcel Entry/ParcelDashboard";    // ✔ parcel list page
-import CreateParcel from "./components/Parcel Entry/CreateParcel";          // ✔ parcel entry page
+import ParcelDashboard from "./components/Parcel Entry/ParcelDashboard";
+import CreateParcel from "./components/Parcel Entry/CreateParcel";        
 
 // Temporary Dashboard
 function Dashboard() {
