@@ -23,14 +23,7 @@ export default function SummaryCard({
     return (
       <Card
         sx={{
-          width: "320px",
           height: "100%",
-          minWidth: {
-            xs: "100%",   // mobile
-            sm: 260,      // tablet
-            md: 280,      // laptop
-            lg: 300       // desktop
-          },
           borderRadius: 3,
           transition: "transform 0.2s, box-shadow 0.2s",
           "&:hover": {

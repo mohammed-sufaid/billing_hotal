@@ -4,8 +4,9 @@ import Layout from "./components/Layout";
 
 import Login from "./components/Login";
 
+
 // Billing & Cashier
-import BillingDashboard from "./components/BillingDashboard";
+import BillingDashboard from "./components/Dashboard/BillingDashboard";
 import CashierScreen from "./pages/CashierScreen";
 
 // Parcel Pages
